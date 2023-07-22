@@ -1,0 +1,34 @@
+<div class="chat">
+  <div class="chatBox">
+  <h1 class="chatTitle">Real Time Chat</h1>
+  <div class="chatContainer">
+    <div class="chatSubBox">
+      <div class="fieldName">
+        <label for="name" class="nameLabel">Name</label>
+        <input type="text" name="name" placeholder="name" required  id="nameId" class="name">
+      </div>      
+      <div class="fieldEmail">
+        <label for="email" class="emailLabel">Email</label>
+        <input type="text" name="email" placeholder="email" required id="emailId" class="email">
+      </div>      
+      <div class="fieldMessage">
+        <label for="message" class="messageLabel">Message</label>
+        <input type="text" name="message" placeholder="message" required id="messageId" class="message">
+      </div>
+      <div class="chatButton">
+        <button onclick="sendMessage()" class="btn">Send</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="chatBox">
+    <h2 class="chatTitle">Chat</h2>
+    <div class="chatView"> 
+      <div name="message" id="viewId" class="view"></div>
+    </div>  
+  </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.min.js" integrity="sha512-uXal8CICQ52UxoF9A3yBP6GUXGu5N2IoTZf/YXGMW4M0AvNyViA0ZjpGf9uqRpkN4kyx41Y5I0DmTQNOS6G05A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/chat.js"></script>

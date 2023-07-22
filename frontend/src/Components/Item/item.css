@@ -1,0 +1,4 @@
+.fondo {
+    background: linear-gradient(114.95deg, rgba(255, 255, 255, 0.5) 0%, rgba(0, 71, 255, 0) 34%), linear-gradient(180deg, #004B5B 0%, #470101 100%), linear-gradient(244deg, #eedac7 0%, #3676B1 50.58%, #00A3FF 100%), linear-gradient(244deg, #FFFFFF 0%, #004A74 49.48%, #FF0000 100%), radial-gradient(100% 233.99% at 0% 100%, #000f42 0%, #00285c 100%), linear-gradient(307.27deg, #82c9bc 0.37%, #203c81 50.19%, #2800C6 100%), radial-gradient(100% 140% at 100% 0%, #080333 0%, #91adb1 49.5%, #121420 100%);
+    background-blend-mode: hard-light, overlay, overlay, overlay, difference, hard-light, normal;
+}
