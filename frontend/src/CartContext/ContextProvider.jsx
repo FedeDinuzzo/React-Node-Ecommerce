@@ -1,16 +1,16 @@
 import { createContext, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { getCart, addProductInCart } from '../MongoDB/CartMongo'
+import { useCookies } from 'react-cookie'
 
 export const Context = createContext();
 
 export default function ContextProvider({children}) {
-  //Remember the amount of products in cart using LocalStorage
-  const localCart = JSON.parse(localStorage.getItem('cart') || '[]');
-  const [cart, setCart] = useState(localCart);
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+  const [cookies, setCookie] = useState()
+  const [cart, setCart] = useState([]);
+
+  getCart(cid, cookies)
 
   const addToCart = (product, quantity) => {
     product.quantity = quantity;

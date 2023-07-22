@@ -49,7 +49,7 @@ export const testLogin = async (req, res) => {
       return res
         .cookie('jwtCookies',token,{maxAge: 30000 , httpOnly: true} ) // setea la cookie
         .status(200)
-        .json({token})//muestra el token
+        .json({token, rol: user.rol}) //muestra el token
 
     } else {
       res.status(401).json({

@@ -9,13 +9,13 @@ export const login = async (cliente) => {
     credentials: 'include', 
     body: JSON.stringify(cliente)
   });
-  const data = await response.json();
-
+  const data = await response.json().populate;
   if (response.ok) {
-    const token = data.token;
+    const {token, rol, idCart} = data;
+    console.log(data)
     document.cookie = `jwtCookies=${token};expires=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()};path=/`;
-    window.location.href = '/';
-    return token;
+    // window.location.href = '/';
+    return {token, rol, idCart};
   } else {
     throw new Error(data.message);
   }

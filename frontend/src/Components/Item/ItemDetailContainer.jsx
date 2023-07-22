@@ -5,12 +5,13 @@ import { getProductByCode } from "../../MongoDB/ProductMongo";
 import Loader from '../Loader';
 
 function ItemDetailContainer() {
+    const { _id } = useParams()
     const [item, setItem] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        getProductByCode()
-        .then(prod => setItem(prod))
+        getProductByCode(_id)
+        .then(product => setItem(product))
         .catch(error => console.log(error))
         .finally(() => setLoading(false))
     }, []);
