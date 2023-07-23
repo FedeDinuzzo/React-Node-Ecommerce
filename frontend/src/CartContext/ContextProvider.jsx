@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { getCart, addProductInCart } from '../MongoDB/CartMongo'
 import { useCookies } from 'react-cookie'
 
 export const Context = createContext();

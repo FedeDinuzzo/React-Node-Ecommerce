@@ -9,7 +9,7 @@ export const login = async (cliente) => {
     credentials: 'include', 
     body: JSON.stringify(cliente)
   });
-  const data = await response.json().populate;
+  const data = await response.json();
   if (response.ok) {
     const {token, rol, idCart} = data;
     console.log(data)
