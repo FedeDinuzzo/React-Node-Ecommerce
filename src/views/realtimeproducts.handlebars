@@ -1,0 +1,67 @@
+
+<h1 style="text-align: center;">Web Socket</h1>
+
+<h2 style="text-align: center;"> Agregar producto </h2>
+  <div style="margin-bottom: 10px;"></div>
+  <div class="productContainter">
+    <div class="productTitleAdd">
+      <div class="id titleCards">ID</div>
+      <div class="title titleCards">Titulo</div>
+      <div class="description titleCards" style="justify-content: center;">Descripcion</div>
+      <div class="price titleCards">Precio</div>
+      <div class="thumbnail titleCards"> Imagen </div>
+      <div class="code titleCards"> Codigo</div>
+      <div class="stock titleCards">Stock</div>
+      <div class="category titleCards">Categoria</div>
+      <div class="status titleCards">Estado</div>    
+    </div>
+  </div>
+  <div class="productContainter">
+    <div class="productTitleAdd">
+      <div class="id titleCards">N°</div>
+      <input class="title titleCards" type="text" id="title" name="title" placeholder="Titulo" required>
+      <input class="description titleCards" type="text" id="description" name="description" placeholder="Descripcion" required>
+      <input class="price titleCards" type="number" id="price" name="price" placeholder="0.0" required>
+      <input class="thumbnail titleCards" type="file" id="thumbnail" name="thumbnail" accept="image/png, image/jpeg">
+      <input class="code titleCards" type="text" id="code" name="code" placeholder="aaa001" required>
+      <input class="stock titleCards" type="number" id="stock" name="stock" placeholder="0" required>
+      <input class="category titleCards" type="text" id="category" name="category" placeholder="category" required>
+      <input class="status titleCards" type="checkbox" id="status" name="status" checked>            
+    </div>
+  </div>
+  <div style="margin-bottom: 20px;"></div>
+  <div class="addButtonContainer">
+    <button class="addButton" onclick="addProduct()">Agregar Producto</button>
+  </div>
+  <div style="margin-bottom: 30px;"></div>
+
+<h2 style="text-align: center"> Lista de productos </h2>
+<div style="margin-bottom: 10px;"></div>
+
+<div class="productContainter">
+  <div class="productTitle">
+      <div class="id titleCards">ID</div>
+      <div class="title titleCards">Titulo</div>
+      <div class="descriptionList titleCards" style="justify-content: center;">Descripcion</div>
+      <div class="price titleCards">Precio</div>
+      <div class="thumbnail titleCards"> Imagen </div>
+      <div class="code titleCards"> Codigo</div>
+      <div class="stock titleCards">Stock</div>
+      <div class="category titleCards">Categoria</div>
+      <div class="status titleCards">Estado</div>
+      <div class="deleteButton titleCards">Eliminar</div>
+  </div>
+</div>
+
+<div class="productContainter" id="ProductsServerList"> </div>    
+
+
+
+<script 
+  src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.min.js" 
+  integrity="sha512-uXal8CICQ52UxoF9A3yBP6GUXGu5N2IoTZf/YXGMW4M0AvNyViA0ZjpGf9uqRpkN4kyx41Y5I0DmTQNOS6G05A==" 
+  crossorigin="anonymous" 
+  referrerpolicy="no-referrer">
+</script>
+
+<script src="js/main.js"></script>
