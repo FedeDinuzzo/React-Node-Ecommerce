@@ -6,7 +6,7 @@ export const transporter = nodemailer.createTransport({// genero la forma de env
   host: 'smtp.gmail.com', //defino el servicio de mail a utilizar (gmail)
   port: 465,
   auth:{
-    user:'nicolas.campeoni.dev@gmail.com',
+    user:'federico.dinuzzo.soluciones@gmail.com',
     pass: env.mailPass,
     authMethod: 'LOGIN'
   }
