@@ -1,19 +1,5 @@
 import {env} from "./config/config.js"
-import express from "express";
-import cookieParser from 'cookie-parser'
-import mongoose from 'mongoose';
 import { __dirname } from "./path.js";
-import routers from './routes/routes.js'
-import passport from "passport";
-import initializePassport from "./middleware/passport.js";
-import session from 'express-session';
-import nodemailer from 'nodemailer' 
-import errorHandler from "./middleware/errors/errorHandler.js";
-
-import {Server} from "socket.io";
-import * as path from 'path'
-import { engine } from 'express-handlebars';
-import {findMessages, updateMessage} from './services/messageService.js'
 
 import cluster from 'cluster'
 import { cpus } from 'os'
