@@ -3,7 +3,7 @@ import CustomError from '../utils/erroresHandler/CustomError.js'
 import {EErrors} from '../utils/erroresHandler/enums.js'
 import {invalidSortErrorInfo, generateProductErrorInfo} from '../utils/erroresHandler/info.js'
 import {transporter} from "../utils/mail.js"
-            
+            //g
 export const getProducts = async (req, res, next) => {  //Recupera todos los productos. puede ser limitado si se informa por URL
   const ValidSort = ['asc', 'desc']
 
