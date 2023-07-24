@@ -9,7 +9,7 @@ import initializePassport from "./middleware/passport.js";
 import session from 'express-session';
 import errorHandler from "./middleware/errors/errorHandler.js";
 import multer from 'multer'
-import {Server} from "socket.io";
+// import {Server} from "socket.io";
 import * as path from 'path'
 import { engine } from 'express-handlebars';
 import {findMessages, updateMessage} from './services/messageService.js'
@@ -122,28 +122,28 @@ app.set('view engine', 'handlebars'); //indica que usaremos el motor de vista ha
 app.set('views', path.resolve(__dirname, './views')); //__dirname + './views'
 
 //ServerIO
-const io = new Server(server)
+// const io = new Server(server)
 
 //SocketIo Server Connection
-io.on("connection", async (socket)=> {  
-  console.log("cliente socket conectado!");  
+// io.on("connection", async (socket)=> {  
+//   console.log("cliente socket conectado!");  
   
-  socket.on("loadMessage", async () => {
-    const textMessage = await findMessages()
-    socket.emit("pushMessage", textMessage)
-  })
+//   socket.on("loadMessage", async () => {
+//     const textMessage = await findMessages()
+//     socket.emit("pushMessage", textMessage)
+//   })
   
-  socket.on("addMessage", async (newMessage) => {
-    await updateMessage([newMessage])  
+//   socket.on("addMessage", async (newMessage) => {
+//     await updateMessage([newMessage])  
 
-    const textMessage = await findMessages()    
-    socket.emit("pushMessage", textMessage)
-  })
+//     const textMessage = await findMessages()    
+//     socket.emit("pushMessage", textMessage)
+//   })
 
-  socket.on("mailValidation",async(email) => {
-    const answer = await findUserByEmail(email) 
-    socket.emit("answerMailValidation", answer)
-  })
-})
+//   socket.on("mailValidation",async(email) => {
+//     const answer = await findUserByEmail(email) 
+//     socket.emit("answerMailValidation", answer)
+//   })
+// })
 
 
