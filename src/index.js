@@ -10,8 +10,8 @@ import session from 'express-session';
 import errorHandler from "./middleware/errors/errorHandler.js";
 import multer from 'multer'
 // import {Server} from "socket.io";
-import * as path from 'path'
-import { engine } from 'express-handlebars';
+// import * as path from 'path'
+// import { engine } from 'express-handlebars';
 // import {findMessages, updateMessage} from './services/messageService.js'
 // import {findUserByEmail} from './services/userService.js'
 import { addLogger } from './utils/logger.js'
@@ -117,9 +117,9 @@ const server = app.listen(app.get("port"), () => {
 })
 
 //HandleBars Configuration
-app.engine('handlebars', engine());   //configuración del motor de express
-app.set('view engine', 'handlebars'); //indica que usaremos el motor de vista handlebars
-app.set('views', path.resolve(__dirname, './views')); //__dirname + './views'
+// app.engine('handlebars', engine());   //configuración del motor de express
+// app.set('view engine', 'handlebars'); //indica que usaremos el motor de vista handlebars
+// app.set('views', path.resolve(__dirname, './views')); //__dirname + './views'
 
 //ServerIO
 // const io = new Server(server)
