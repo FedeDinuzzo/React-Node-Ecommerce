@@ -10,8 +10,8 @@ import session from 'express-session';
 import errorHandler from "./middleware/errors/errorHandler.js";
 import multer from 'multer'
 // import {Server} from "socket.io";
-// import * as path from 'path'
-// import { engine } from 'express-handlebars';
+import * as path from 'path'
+import { engine } from 'express-handlebars';
 // import {findMessages, updateMessage} from './services/messageService.js'
 // import {findUserByEmail} from './services/userService.js'
 import { addLogger } from './utils/logger.js'
@@ -19,7 +19,7 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUiExpress from 'swagger-ui-express'
 // import cors from 'cors'
 
-// const whiteList = ['http://localhost:3000', 'http://localhost:5173'] // Rutas validas de mi servidor
+// const whiteList = ['http://localhost:5173'] // Rutas validas de mi servidor
 
 // const corsOptions = { // Reviso si el cliente que intenta ingresar a mi servidor esta o no en esta lista
 //   origin: (origin, callback) => {
@@ -31,11 +31,10 @@ import swaggerUiExpress from 'swagger-ui-express'
 //   }
 // }
 
-
 // Multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "client/public/images")
+    cb(null, "src/public/img")
   },
   filename: (req, file, cb) => {
     cb(null, `${file.originalname}`)
@@ -47,12 +46,12 @@ const upload = multer({ storage: storage })
 const app = express(); 
 
 // Middleware para habilitar CORS
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//   res.setHeader('Access-Control-Allow-Credentials', 'true');
+//   next();
+// });
 
 
 // Define los middleware para la aplicación
@@ -98,16 +97,7 @@ app.post('/upload', upload.single('product'), (req,res) => {
 
 
 //Public folder
-app.use('/', express.static(peth.join(__dirname + '/client/build')))
-
-app.get("*", function(_, res) {
-  res.sendFile(
-    path.join(__dirname, "./client/build/index.html"),
-    function (err) {
-      res.status(5000).send(err)
-    }
-  )
-})
+app.use('/', express.static(__dirname + '/public'))
 
 const specs = swaggerJSDoc(swaggerOptions)
 app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
@@ -120,16 +110,16 @@ app.use((req, res, next)=> {
 });
 
 // Configura el puerto del servidor y lo inicia
-app.set ("port", env.port || 3000)
+app.set ("port", env.port || 5000)
 
 const server = app.listen(app.get("port"), () => {
   console.log(`Server on port ${app.get("port")}`)
 })
 
 //HandleBars Configuration
-// app.engine('handlebars', engine());   //configuración del motor de express
-// app.set('view engine', 'handlebars'); //indica que usaremos el motor de vista handlebars
-// app.set('views', path.resolve(__dirname, './views')); //__dirname + './views'
+app.engine('handlebars', engine());   //configuración del motor de express
+app.set('view engine', 'handlebars'); //indica que usaremos el motor de vista handlebars
+app.set('views', path.resolve(__dirname, './views')); //__dirname + './views'
 
 //ServerIO
 // const io = new Server(server)
