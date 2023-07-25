@@ -120,7 +120,7 @@ app.use((req, res, next)=> {
 });
 
 // Configura el puerto del servidor y lo inicia
-app.set ("port", env.port || 5000)
+app.set ("port", env.port || 3000)
 
 const server = app.listen(app.get("port"), () => {
   console.log(`Server on port ${app.get("port")}`)
