@@ -17,19 +17,19 @@ import { engine } from 'express-handlebars';
 import { addLogger } from './utils/logger.js'
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUiExpress from 'swagger-ui-express'
-// import cors from 'cors'
+import cors from 'cors'
 
-// const whiteList = ['http://localhost:5173'] // Rutas validas de mi servidor
+const whiteList = ['http://localhost:5173'] // Rutas validas de mi servidor
 
-// const corsOptions = { // Reviso si el cliente que intenta ingresar a mi servidor esta o no en esta lista
-//   origin: (origin, callback) => {
-//       if (whiteList.indexOf(origin) !== -1) {
-//           callback(null, true)
-//       } else {
-//           callback(new Error('Not allowed by Cors'))
-//       }
-//   }
-// }
+const corsOptions = { // Reviso si el cliente que intenta ingresar a mi servidor esta o no en esta lista
+  origin: (origin, callback) => {
+      if (whiteList.indexOf(origin) !== -1) {
+          callback(null, true)
+      } else {
+          callback(new Error('Not allowed by Cors'))
+      }
+  }
+}
 
 // Multer
 const storage = multer.diskStorage({
@@ -45,18 +45,18 @@ const upload = multer({ storage: storage })
 
 const app = express(); 
 
-// Middleware para habilitar CORS
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//   res.setHeader('Access-Control-Allow-Credentials', 'true');
-//   next();
-// });
+Middleware para habilitar CORS
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 
 
 // Define los middleware para la aplicación
 app.use(express.json());
-// app.use(cors(corsOptions))
+app.use(cors(corsOptions))
 app.use(express.urlencoded({ extended: true })); //Permite realizar consultas en la URL (req.query)
 app.use(cookieParser(env.cookieSecret))
 
