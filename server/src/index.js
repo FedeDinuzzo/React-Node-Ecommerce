@@ -97,7 +97,7 @@ app.post('/upload', upload.single('product'), (req,res) => {
 
 
 //Public folder
-app.use('/', express.static(__dirname + '/public'))
+app.use('/', express.static(__dirname + '/client/build'))
 
 const specs = swaggerJSDoc(swaggerOptions)
 app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
