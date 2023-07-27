@@ -17,7 +17,7 @@ import { engine } from 'express-handlebars';
 import { addLogger } from './utils/logger.js'
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUiExpress from 'swagger-ui-express'
-// import cors from 'cors'
+import cors from 'cors'
 
 const whiteList = ['https://dinuzzo-frontend.vercel.app', 'http://localhost:5173', 'http://localhost:4000'] // Rutas validas de mi servidor
 
