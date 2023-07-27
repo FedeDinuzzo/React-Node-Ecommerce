@@ -19,17 +19,17 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUiExpress from 'swagger-ui-express'
 // import cors from 'cors'
 
-// const whiteList = ['http://localhost:5173'] // Rutas validas de mi servidor
+const whiteList = ['https://dinuzzo-frontend.vercel.app', 'http://localhost:5173', 'http://localhost:4000'] // Rutas validas de mi servidor
 
-// const corsOptions = { // Reviso si el cliente que intenta ingresar a mi servidor esta o no en esta lista
-//   origin: (origin, callback) => {
-//       if (whiteList.indexOf(origin) !== -1) {
-//           callback(null, true)
-//       } else {
-//           callback(new Error('Not allowed by Cors'))
-//       }
-//   }
-// }
+const corsOptions = { // Reviso si el cliente que intenta ingresar a mi servidor esta o no en esta lista
+ origin: (origin, callback) => {
+      if (whiteList.indexOf(origin) !== -1) {
+          callback(null, true)
+      } else {
+         callback(new Error('Not allowed by Cors'))
+     }
+ }
+}
 
 // Multer
 const storage = multer.diskStorage({
